@@ -14,6 +14,7 @@ const Body = () => {
   //  const searchTxt = 'KFC';
   const [restaurants, setRestaurants] = useState(restaurantList);
   const [searchText, setSearchText] = useState(''); // To create state varialble
+  console.log(restaurants);
 
   return (
     <>
