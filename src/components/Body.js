@@ -6,7 +6,7 @@ import Shimmer from './Shimmer';
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
-    restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
+    restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase())
   );
 
   return filterData;
@@ -18,23 +18,22 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState(''); // To create state varialble
 
-  // empty dependency array => once after render
-  // dependency array [searchText] => once after initial render + everytime after re-render (my searchText changes)
   useEffect(() => {
-    // API call
     getRestaurants();
   }, []);
 
   async function getRestaurants() {
     const data = await fetch(GET_RES_API);
     const json = await data.json();
-    console.log(json);
-    // This isa bad way to do // Optional Chaining
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-  }
 
-  console.log('render');
+    // This isa bad way to do // Optional Chaining
+    setAllRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  }
 
   // Conditional Rendering
   // if restaurant is empty => shimmer Ui
@@ -43,8 +42,8 @@ const Body = () => {
   // not render component (Early return)
   if (!allRestaurants) return null;
 
-  if (filteredRestaurants?.length === 0)
-    return <h1>No Restaurant match your Filter!!</h1>;
+  // if (filteredRestaurants?.length === 0)
+  //   return <h1>No Restaurant match your Filter!!</h1>;
 
   return allRestaurants?.length === 0 ? (
     <Shimmer />
@@ -76,7 +75,7 @@ const Body = () => {
       <div className="restaurant__list">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+            <RestaurantCard {...restaurant.info} key={restaurant.info.id} />
           );
         })}
       </div>

@@ -34,5 +34,11 @@
 .restaurant__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 200px;
+  background: lightgray;
+  margin: 20px;
 }

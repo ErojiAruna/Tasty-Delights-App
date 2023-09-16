@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Logo from '../assets/tasty-delights.png';
 
 const loggedInUser = () => {
   // API call to check authentication
@@ -7,11 +8,7 @@ const loggedInUser = () => {
 
 const Title = () => (
   <a href="/">
-    <img
-      alt="Tasty Delights Logo"
-      className="logo"
-      src="https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_300,q_100,fl_lossy,dpr_2.0,c_fit,f_auto,h_300/hzv1pcaqfxtlvbzkw1bi"
-    />
+    <img alt="Tasty Delights Logo" className="logo" src={Logo} />
   </a>
 );
 
