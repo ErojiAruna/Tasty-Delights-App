@@ -42,3 +42,10 @@
   background: lightgray;
   margin: 20px;
 }
+
+.error {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  display: block;
+}
