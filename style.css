@@ -1,17 +1,23 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  /*margin: 10px;*/
   border: 2px solid black;
 }
 
+.nav__items {
+  padding: 0px 20px;
+}
+
 .nav__items > ul {
+  font-size: 24px;
   list-style-type: none;
   display: flex;
 }
 
 .nav__items > ul > li {
   padding: 10px;
+  margin: 10px;
 }
 
 .logo {
@@ -36,9 +42,13 @@
   flex-wrap: wrap;
 }
 
+.search {
+  padding: 10px;
+}
+
 .shimmer-card {
   width: 200px;
-  height: 200px;
+  height: 400px;
   background: lightgray;
   margin: 20px;
 }
@@ -50,5 +60,5 @@
   display: block;
 }
 .menu {
-  display: flex;
+  display: block;
 }
