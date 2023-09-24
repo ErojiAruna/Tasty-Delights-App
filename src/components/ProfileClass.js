@@ -5,31 +5,48 @@ class Profile extends React.Component {
     super(props);
     // Create State
     this.state = {
-      count: 0,
-      count2: 0,
+      userInfo: {
+        name: 'Dummy Name',
+        location: 'Dummy Location',
+      },
     };
+    //console.log('Child - Constructor' + this.props.name);
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      console.log('Hello');
+    }, 1000);
+    // API Calls
+    //console.log('Child - componentDidMount');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.count !== prevState.count) {
+      //
+    }
+    if (this.state.count2 !== prevState.count2) {
+      // code
+    }
+    console.log('ComponentDidUpdate');
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    //console.log("ComponentWillUnmount");
   }
 
   render() {
     const { count } = this.state;
+    console.log('Child -render' + this.props.name);
     return (
       <div>
         <h1> Profile Class Component </h1>
-        <h2>Name: {this.props.name}</h2>
-        <h2>XYZ: {this.props.xyz}</h2>
-        <h2>Count: {count}</h2>
-        <button
-          onClick={() => {
-            // WE DO NOT MUTATE STATE DIRECTLY
-            // Never do this.state = something
-            this.setState({
-              count: 1,
-            });
-          }}
-        >
-          SetCount
-        </button>
+        <img src={this.state.userInfo.avatar_url} />
+        <h2>Name: {this.state.userInfo.name}</h2>
+        <h2>Location: {this.state.userInfo.Location}</h2>
       </div>
     );
   }
 }
+
+export default Profile;
