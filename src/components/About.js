@@ -19,9 +19,7 @@ class About extends React.Component {
         <p>
           This is the Namaste React Live Course Chapter 07 - Finding the Path
         </p>
-
-        <Profile name={'First Child'} xyz="abc" />
-        <Profile name={'Second Child'} xyz="abc" />
+        <Profile />
       </div>
     );
   }

@@ -5,6 +5,7 @@ import { GET_RES_API } from '../config';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { filterData } from '../../utils/helper';
+import useOnline from '../../utils/useOnline';
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -20,13 +21,18 @@ const Body = () => {
     const data = await fetch(GET_RES_API);
     const json = await data.json();
 
-    // This isa bad way to do // Optional Chaining
     setAllRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+  }
+
+  const isOnline = useOnline();
+
+  if (!isOnline) {
+    return <h1>🔴 Offline, please check your internet connection!!</h1>;
   }
 
   return allRestaurants?.length === 0 ? (
