@@ -39,7 +39,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-pink-50 my-5">
         <input
           type="text"
           className="search-input"
@@ -51,7 +51,7 @@ const Body = () => {
         />
 
         <button
-          className="search-btn"
+          className="p-2 m-2 bg-purple-500 text-white rounded-md"
           onClick={() => {
             // need to filter the data
             // update the state - restaurants
@@ -62,7 +62,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant__list">
+      <div className="m-20 flex flex-row flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => (
           <Link
             to={'/restaurant/' + restaurant?.info.id}
