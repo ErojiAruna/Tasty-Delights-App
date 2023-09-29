@@ -6,9 +6,10 @@ const RestaurantCard = ({
   cuisines,
   avgRating,
   deliveryTime,
+  user,
 }) => {
   return (
-    <div className="w-80 h-80 p-2 m-2 rounded-t-2xl">
+    <div className="w-80 h-96 p-2 m-2 rounded-t-2xl">
       <img className="rounded-2xl" src={IMG_CDN_URL + cloudinaryImageId} />
       <div className="p-3">
         <h2 className="font-bold text-xl">{name}</h2>
@@ -23,6 +24,7 @@ const RestaurantCard = ({
           </path>
         </h4>
         <h5>{deliveryTime} minutes</h5>
+        <h5>{user.name}</h5>
       </div>
     </div>
   );
