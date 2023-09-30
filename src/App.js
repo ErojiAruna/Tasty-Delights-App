@@ -9,20 +9,28 @@ import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
+import userContext from '../utils/userContext';
 
 const Instamart = lazy(() => import('./components/Instamart'));
 // Upon On Demand Loading --> Upon render -> suspend loading
 const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({
+    name: 'Tasty Delights',
+    email: 'support@tastydelights.com',
+  });
 
   return (
-    <>
+    <userContext.Provider
+      value={{
+        user: user,
+      }}
+    >
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </userContext.Provider>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileFunctionalComponent from './Profile';
 import Profile from './ProfileClass';
+import userContext from '../../utils/userContext';
 
 class About extends React.Component {
   constructor(props) {
@@ -16,6 +17,14 @@ class About extends React.Component {
     return (
       <div>
         <h1>About Us Page</h1>
+
+        <userContext.Consumer>
+          {({ user }) => (
+            <h4 className="font-bold text-xl p-10">
+              {user?.name} - {user?.email}
+            </h4>
+          )}
+        </userContext.Consumer>
         <p>
           This is the Namaste React Live Course Chapter 07 - Finding the Path
         </p>

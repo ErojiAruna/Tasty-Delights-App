@@ -1,4 +1,6 @@
 import { IMG_CDN_URL } from '../config';
+import { useContext } from 'react';
+import userContext from '../../utils/userContext';
 
 const RestaurantCard = ({
   name,
@@ -24,7 +26,9 @@ const RestaurantCard = ({
           </path>
         </h4>
         <h5>{deliveryTime} minutes</h5>
-        <h5>{user.name}</h5>
+        <h5 className="font-bold">
+          {user.name} - {user.email}
+        </h5>
       </div>
     </div>
   );

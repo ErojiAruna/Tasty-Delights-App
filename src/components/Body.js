@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { restaurantList } from '../config';
 import RestaurantCard from './RestaurantCard';
 import { GET_RES_API } from '../config';
@@ -6,12 +6,14 @@ import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { filterData } from '../../utils/helper';
 import useOnline from '../../utils/useOnline';
+import userContext from '../../utils/userContext';
 
-const Body = ({ user }) => {
+const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const [searchText, setSearchText] = useState(''); // To create state varialble
+  const { user, setUser } = useContext(userContext);
 
   useEffect(() => {
     getRestaurants();
@@ -27,12 +29,6 @@ const Body = ({ user }) => {
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-  }
-
-  const isOnline = useOnline();
-
-  if (!isOnline) {
-    return <h1>🔴 Offline, please check your internet connection!!</h1>;
   }
 
   return allRestaurants?.length === 0 ? (
@@ -61,6 +57,24 @@ const Body = ({ user }) => {
         >
           Search
         </button>
+        <input
+          value={user.name}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              name: e.target.value,
+            })
+          }
+        ></input>
+        <input
+          value={user.email}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              email: e.target.value,
+            })
+          }
+        ></input>
       </div>
       <div className="m-20 flex flex-row flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => (
