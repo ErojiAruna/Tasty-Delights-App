@@ -3,15 +3,14 @@ import Logo from '../assets/tasty-delights.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../../utils/useOnline';
 import userContext from '../../utils/userContext';
+import { useSelector } from 'react-redux';
 
-const loggedInUser = () => {
-  // API call to check authentication
-  return false;
-};
+const { loggedInUser } = useContext(userContext);
+// API call to check authentication
 
 const Title = () => (
   <a href="/">
-    <img alt="Tasty Delights Logo" className="h-28 p-2" src={Logo} />
+    <img alt="Tasty Delights Logo" className="h-28 p-2 w-56" src={Logo} />
   </a>
 );
 
@@ -22,10 +21,11 @@ const Header = () => {
 
   const { user } = useContext(userContext);
 
-  return (
-    <div className="flex justify-between bg-pink-50">
-      <Title />
+  // Subscribing to the store using a Selector
 
+  return (
+    <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50">
+      <Title />
       <div className="nav__items">
         <ul className="flex py-10">
           <li className="px-2">
