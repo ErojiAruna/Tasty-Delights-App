@@ -9,7 +9,9 @@ import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
+import { useContext } from 'react';
 import userContext from '../utils/userContext';
+import { Provider } from 'react-redux';
 
 const Instamart = lazy(() => import('./components/Instamart'));
 // Upon On Demand Loading --> Upon render -> suspend loading

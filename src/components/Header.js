@@ -5,7 +5,7 @@ import useOnline from '../../utils/useOnline';
 import userContext from '../../utils/userContext';
 import { useSelector } from 'react-redux';
 
-const { loggedInUser } = useContext(userContext);
+//const { loggedInUser } = useContext(userContext);
 // API call to check authentication
 
 const Title = () => (
@@ -19,7 +19,8 @@ const Header = () => {
 
   const isOnline = useOnline();
 
-  const { user } = useContext(userContext);
+  const data = useContext(userContext);
+  const { name, email } = data.user;
 
   // Subscribing to the store using a Selector
 
@@ -46,7 +47,7 @@ const Header = () => {
         </ul>
       </div>
       <h1>{isOnline ? '✅' : '🔴'}</h1>
-      <span className="p-10 font-bold text-red-900">{user?.name}</span>
+      <span className="p-10 font-bold text-red-900">{data?.user?.name}</span>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Logout</button>
       ) : (

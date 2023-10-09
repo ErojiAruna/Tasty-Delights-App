@@ -8,7 +8,6 @@ const RestaurantCard = ({
   cuisines,
   avgRating,
   deliveryTime,
-  user,
 }) => {
   const { user } = useContext(userContext);
   return (
