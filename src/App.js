@@ -12,6 +12,8 @@ import Shimmer from './components/Shimmer';
 import { useContext } from 'react';
 import userContext from '../utils/userContext';
 import { Provider } from 'react-redux';
+import appStore from '../utils/appStore';
+import Cart from './components/Cart';
 
 const Instamart = lazy(() => import('./components/Instamart'));
 // Upon On Demand Loading --> Upon render -> suspend loading
@@ -24,7 +26,7 @@ const AppLayout = () => {
   });
 
   return (
-    <>
+    <Provider store={appStore}>
       <userContext.Provider
         value={{
           user: user,
@@ -35,7 +37,7 @@ const AppLayout = () => {
         <Outlet />
         <Footer />
       </userContext.Provider>
-    </>
+    </Provider>
   );
 };
 
@@ -79,6 +81,10 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         ),
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },
