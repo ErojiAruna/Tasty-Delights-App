@@ -9,10 +9,9 @@ import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
-import { useContext } from 'react';
 import userContext from '../utils/userContext';
 import { Provider } from 'react-redux';
-import appStore from '../utils/appStore';
+import store from '../utils/store';
 import Cart from './components/Cart';
 
 const Instamart = lazy(() => import('./components/Instamart'));
@@ -26,7 +25,7 @@ const AppLayout = () => {
   });
 
   return (
-    <Provider store={appStore}>
+    <Provider store={store}>
       <userContext.Provider
         value={{
           user: user,

@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 import useOnline from '../../utils/useOnline';
 import userContext from '../../utils/userContext';
 import { useSelector } from 'react-redux';
-import appStore from '../../utils/appStore';
+import store from '../../utils/store';
 
 //const { loggedInUser } = useContext(userContext);
 // API call to check authentication
 
 const Title = () => (
   <a href="/">
-    <img alt="Tasty Delights Logo" className="h-28 p-2 w-50" src={Logo} />
+    <img
+      data-testid="logo"
+      alt="Tasty Delights Logo"
+      className="h-28 p-2 w-50"
+      src={Logo}
+    />
   </a>
 );
 
@@ -23,7 +28,7 @@ const Header = () => {
   const data = useContext(userContext);
   const { name, email } = data.user;
 
-  const cartItems = useSelector((appStore) => appStore.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
 
   // Subscribing to the store using a Selector
 
